@@ -19,17 +19,17 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(private fb: FormBuilder) {
         this.simulatorForm = fb.group({
-            dailyRevenue: 420,
-            daysPerMonth: 10,
+            dailyRevenue: 500,
+            daysPerMonth: 17,
             otherMonthlyRevenue: 0,
             otherAnnualRevenue: 0,
-            monthlyFees: 600,
-            annualFees: 2000,
-            monthlyGrossSalary: 1000,
+            monthlyFees: 300,
+            annualFees: 3500,
+            monthlyGrossSalary: 2800,
             annualBonus: 0,
-            dividendsPercentage: 80,
-            familyReferenceRevenue: 45000,
-            familyQuotient: 2
+            dividendsPercentage: 100,
+            familyReferenceRevenue: 0,
+            familyQuotient: 1
         });
     }
 
