@@ -30,9 +30,10 @@ export class GraphSankeyComponent implements OnChanges {
                     ['Salaire super-brut', 'Salaire brut', this.model.totalAnnualGrossSalary],
                         ['Salaire brut', 'Charges salariales', this.model.employeeSalaryTax],
                             ['Charges salariales', 'Etat', this.model.employeeSalaryTax],
-                        ['Salaire brut', 'Salaire net', this.model.annualNetSalary+this.model.salaryRevenueTax],
-                            ['Salaire net', 'Freelance', this.model.annualNetSalary],
-                            ['Salaire net', 'IR', this.model.salaryRevenueTax],
+                        ['Salaire brut', 'Salaire net', this.model.annualNetSalary],
+                        ['Salaire net', 'Revenu net', this.model.annualNetSalary],
+                            ['Revenu net', 'Freelance', this.model.annualNetSalary+(this.model.dividendsFlatTax ? 0 : this.model.netDividends)-this.model.salaryRevenueTax],
+                            ['Revenu net', 'IR', this.model.salaryRevenueTax],
                             ['IR', 'Etat', this.model.salaryRevenueTax],
             ['IS', 'Etat', this.model.profitTax],
                 ['CA total', 'Bénéfices bruts', this.model.grossProfit],
@@ -42,9 +43,9 @@ export class GraphSankeyComponent implements OnChanges {
                             ['Investissement', 'Société', this.model.investment],
                         ['Bénéfices nets', 'Dividendes bruts', this.model.grossDividends],
                             ['Dividendes bruts', 'Dividendes nets', this.model.netDividends],
-                                ['Dividendes nets', 'Freelance', this.model.netDividends],
-                            ['Dividendes bruts', 'Flat tax', this.model.dividendsTax],
-                                ['Flat tax', 'Etat', this.model.dividendsTax]
+                                ['Dividendes nets', this.model.dividendsFlatTax ? 'Freelance' : 'Revenu net', this.model.netDividends],
+                            ['Dividendes bruts', this.model.dividendsFlatTax ? 'Flat tax' : 'Prél. sociaux', this.model.dividendsTax],
+                                [this.model.dividendsFlatTax ? 'Flat tax' : 'Prél. sociaux', 'Etat', this.model.dividendsTax]
         ].filter(r => r[2]);
         google.charts.load('current', {'packages': ['sankey']});
         google.charts.setOnLoadCallback(() => {

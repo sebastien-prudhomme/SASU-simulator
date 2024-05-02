@@ -36,6 +36,7 @@ export class Model {
 
     // Dividends
     dividendsPercentage: number = 0;
+    dividendsFlatTax: boolean = true;
     grossDividends: number = 0;
     dividendsTax: number = 0;
     netDividends: number = 0;
